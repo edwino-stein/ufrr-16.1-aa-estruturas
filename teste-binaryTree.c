@@ -20,7 +20,7 @@ int main(int argc, char *argv[]){
     print("Altura da arvore: ");
     printLn(heightBinaryTreeInt(t));
 
-    printBinaryTreeInt(t, 0);
+    printBinaryTreeInt(t);
     printNewLine();
 
     readF(&n, "Buscar e remover: ");
@@ -30,7 +30,7 @@ int main(int argc, char *argv[]){
     removeBinaryTreeInt(t, n);
 
     printNewLine();
-    printBinaryTreeInt(t, 0);
+    printBinaryTreeInt(t);
     printNewLine();
 
     deleteBinaryTreeInt(t);

@@ -60,8 +60,7 @@ BinaryTreeInt insertBinaryTreeInt(BinaryTreeInt t, int value){
 
 bool _removeBinaryTreeInt(BinaryTreeInt t, BinaryTreeInt parent, int value){
 
-    if(t == NULL) return false;
-    if(isEmptyBinaryTreeInt(t)) return false;
+    if(isEmptyOrNullBinaryTreeInt(t)) return false;
 
     int tValue = getValueBinaryTreeInt(t);
 
@@ -108,8 +107,7 @@ bool _removeBinaryTreeInt(BinaryTreeInt t, BinaryTreeInt parent, int value){
 
 BinaryTreeInt searchBinaryTreeInt(BinaryTreeInt t, int value){
 
-    if(t == NULL) return NULL;
-    if(isEmptyBinaryTreeInt(t)) return NULL;
+    if(isEmptyOrNullBinaryTreeInt(t)) return false;
 
     int tValue = getValueBinaryTreeInt(t);
     if(value < tValue){
@@ -126,8 +124,7 @@ BinaryTreeInt searchBinaryTreeInt(BinaryTreeInt t, int value){
 
 BinaryTreeInt getSucessorBinaryTreeInt(BinaryTreeInt t){
 
-    if(t == NULL) return NULL;
-    if(isEmptyBinaryTreeInt(t)) return NULL;
+    if(isEmptyOrNullBinaryTreeInt(t)) return false;
 
 	if(isLeafBinaryTreeInt(t) || t->right == NULL)
 		return t;
@@ -139,9 +136,8 @@ BinaryTreeInt getSucessorBinaryTreeInt(BinaryTreeInt t){
 
 BinaryTreeInt getPredecessorBinaryTreeInt(BinaryTreeInt t){
 
-    if(t == NULL) return NULL;
-    if(isEmptyBinaryTreeInt(t)) return NULL;
-
+    if(isEmptyOrNullBinaryTreeInt(t)) return false;
+    
     if(isLeafBinaryTreeInt(t) || t->left == NULL)
 		return t;
 
@@ -184,6 +180,11 @@ bool isEmptyBinaryTreeInt(BinaryTreeInt t){
     return t->value == NULL;
 }
 
+bool isEmptyOrNullBinaryTreeInt(BinaryTreeInt t){
+    if(t == NULL) return true;
+    return t->value == NULL;
+}
+
 bool isLeafBinaryTreeInt(BinaryTreeInt t){
     return t->left == NULL && t->right == NULL;
 }
@@ -203,7 +204,7 @@ void printSpaces(int spaces){
     }
 }
 
-void printBinaryTreeInt(BinaryTreeInt t, unsigned int spaces){
+void _printBinaryTreeInt(BinaryTreeInt t, unsigned int spaces){
     if(isEmptyBinaryTreeInt(t)) return;
 
     printf("(%d)\n", getValueBinaryTreeInt(t));
@@ -213,11 +214,11 @@ void printBinaryTreeInt(BinaryTreeInt t, unsigned int spaces){
 
     printSpaces(spaces);
     printf("L");
-    if(t->left != NULL) printBinaryTreeInt(t->left, spaces);
+    if(t->left != NULL) _printBinaryTreeInt(t->left, spaces);
     else printf("()\n");
 
     printSpaces(spaces);
     printf("R");
-    if(t->right != NULL) printBinaryTreeInt(t->right, spaces);
+    if(t->right != NULL) _printBinaryTreeInt(t->right, spaces);
     else printf("()\n");
 }

@@ -21,15 +21,17 @@
     BinaryTreeInt searchBinaryTreeInt(BinaryTreeInt t, int value);
 
     bool _removeBinaryTreeInt(BinaryTreeInt t, BinaryTreeInt parent, int value);
-    #define removeBinaryTreeInt(t, v) _removeBinaryTreeInt(t, NULL, v);
+    #define removeBinaryTreeInt(t, v) _removeBinaryTreeInt(t, NULL, v)
 
     BinaryTreeInt getSucessorBinaryTreeInt(BinaryTreeInt t);
     BinaryTreeInt getPredecessorBinaryTreeInt(BinaryTreeInt t);
 
     int heightBinaryTreeInt(BinaryTreeInt t);
     bool isEmptyBinaryTreeInt(BinaryTreeInt t);
+    bool isEmptyOrNullBinaryTreeInt(BinaryTreeInt t);
     bool isLeafBinaryTreeInt(BinaryTreeInt t);
 
-    void printBinaryTreeInt(BinaryTreeInt t, unsigned int spaces);
+    void _printBinaryTreeInt(BinaryTreeInt t, unsigned int spaces);
+    #define printBinaryTreeInt(t) _printBinaryTreeInt(t, 0)
 
 #endif
