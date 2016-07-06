@@ -186,6 +186,7 @@ void rotationToLeftRBTreeInt(RBTreeInt t, RBTreeNodeInt n){
     RBTreeNodeInt right = n->right;
 
     n->right = right->left;
+    if(n->right != NULL) n->right->parent = n;
     right->left = n;
 
     if(isRootRBTreeNodeInt(n)) t->root = right;
@@ -204,6 +205,7 @@ void rotationToRightRBTreeInt(RBTreeInt t, RBTreeNodeInt n){
     RBTreeNodeInt left = n->left;
 
     n->left = left->right;
+    if(n->left != NULL) n->left->parent = n;
     left->right = n;
 
     if(isRootRBTreeNodeInt(n)) t->root = left;
